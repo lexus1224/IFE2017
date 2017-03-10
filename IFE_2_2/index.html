@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 01</title>
+</head>
+<body>
+
+<h3>环保城市列表</h3>
+<ol id="aqi-list-good">
+</ol>
+
+<h3>污染城市列表</h3>
+<ol id="aqi-list-bad">
+</ol>
+
+<script type="text/javascript">
+
+    var aqiData = [
+        ["北京", 90],
+        ["上海", 50],
+        ["福州", 15],
+        ["广州", 55],
+        ["成都", 90],
+        ["深圳", 20],
+        ["海口", 10],
+        ["石家庄", 120],
+        ["武汉", 80],
+        ["青岛", 40],
+        ["烟台", 110],
+        ["西安", 100]
+    ];
+    var goodAqi = [];
+    var badAqi = [];
+    (function () {
+
+        /*
+         在注释下方编写代码
+         遍历读取aqiData中各个城市的数据
+         将空气质量指数大于60的城市显示到aqi-list的列表中
+         */
+        for(index in aqiData){
+            if(aqiData[index][1]>60){
+                badAqi.push(aqiData[index]);
+            }
+            else {
+                goodAqi.push(aqiData[index]);
+            }
+        }
+        goodAqi.sort(function(a,b){
+            return a[1]-b[1]});
+        for(var index=0;index<goodAqi.length; index++){
+            var ol=document.getElementById("aqi-list-good");
+            var li=document.createElement("li");
+            li.innerHTML=goodAqi[index][0]+' '+goodAqi[index][1];
+            ol.appendChild(li);
+        }
+        badAqi.sort(function(a,b){
+            return b[1]-a[1]});
+        for(var index=0;index<badAqi.length; index++){
+            var ol=document.getElementById("aqi-list-bad");
+            var li=document.createElement("li");
+            li.innerHTML=badAqi[index][0]+' '+badAqi[index][1];
+            ol.appendChild(li);
+        }
+    })();
+
+</script>
+</body>
+</html>
