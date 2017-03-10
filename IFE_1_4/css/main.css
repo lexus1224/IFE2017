@@ -1,0 +1,35 @@
+body, html {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.main {
+    margin: -100px auto 0 auto;
+    position: relative;
+    background-color: #ccc;
+    width: 400px;
+    height: 200px;
+    overflow: hidden;
+    top: 50%;
+}
+
+.lefttop {
+    position: absolute;
+    background-color: #fc0;
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    left: -50px;
+    top: -50px;
+}
+
+.rightbottom {
+    position: absolute;
+    background-color: #fc0;
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    right: -50px;
+    bottom: -50px;
+}
