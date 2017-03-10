@@ -38,7 +38,7 @@ header > img {
     font-size: 13px;
     float: left;
     color: #000;
-    padding-right: 25px;
+    width: 90px;
 }
 
 .headerLink > li > a {
