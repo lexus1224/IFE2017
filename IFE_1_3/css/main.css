@@ -34,13 +34,12 @@ p {
 }
 
 .center {
-    position: absolute;
+
     width: auto;
     padding: 20px;
     border: 2px solid #999;
-    margin: auto 20px;
-    left: 264px;
-    right: 184px;
+    margin-left: 264px;
+    margin-right: 204px;
 }
 
 .right {
@@ -48,7 +47,6 @@ p {
     width: 120px;
     padding: 20px;
     border: 2px solid #999;
-    right: 20px;
 }
 
 img {
