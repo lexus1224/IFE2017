@@ -16,14 +16,14 @@
     <li>成都空气质量：<b>90</b></li>
 </ul>
 
-<ol id="resort">
+<ul id="resort">
     <!--
     <li>第一名：北京空气质量：<b>90</b></li>
     <li>第二名：北京空气质量：<b>90</b></li>
     <li>第三名：北京空气质量：<b>90</b></li>
      -->
 
-</ol>
+</ul>
 
 <button id="sort-btn">排序</button>
 
@@ -38,15 +38,12 @@
         /*
          coding here
          */
-        var temp = [,];
         var data = [];
         var li = document.getElementsByTagName("li");
         var b = document.getElementsByTagName("b");
         for (var index = 0; index < li.length; index++) {
-            temp[0] = li[index].innerHTML.substr(0, 2);
-            temp[1] = b[index].innerHTML;
-            console.log(temp);
-            data.push(temp);
+            console.log([li[index].innerHTML.substr(0, 2),b[index].innerHTML]);
+            data.push([li[index].innerHTML.substr(0, 2),b[index].innerHTML]);
         }
         /*
          data = [
@@ -80,7 +77,10 @@
         for(var index=0;index<data.length; index++){
             var ol=document.getElementById("resort");
             var li=document.createElement("li");
-            li.innerHTML=data[index][0]+' '+data[index][1];
+            li.innerHTML=data[index][0]+"空气质量"+' : ';
+            var b=document.createElement("b");
+            b.innerHTML=data[index][1];
+            li.appendChild(b);
             ol.appendChild(li);
         }
     }
