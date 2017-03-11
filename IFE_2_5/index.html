@@ -6,6 +6,8 @@
     <style type="text/css">
         .num-div {
             height: 150px;
+            margin: 0;
+            padding: 0;
         }
 
         /*设置span样式*/
@@ -15,6 +17,8 @@
             border: 1px solid red;
             padding: 0px;
             margin-left: 5px;
+            color:red;
+            background-color: red;
             /*margin: 10px;*/
         }
     </style>
@@ -68,9 +72,9 @@
                 var newSpan = document.createElement("span");
                 newSpan.innerHTML = dat;
                 newSpan.style.height = dat + 'px';
-                newSpan.style.top = 150 - parseInt(dat);
+                newSpan.style.top = 140 - parseInt(dat);
                 numDiv.insertBefore(newSpan, numDiv.firstChild);
-//                newSpan.addEventListener("click", spanOut, false); //对每个新增的span都绑定click事件
+                newSpan.addEventListener("click", spanOut, false); //对每个新增的span都绑定click事件
             }
         }
 
@@ -90,6 +94,8 @@
                 var numDiv = document.getElementsByClassName("num-div")[0];
                 var newSpan = document.createElement("span");
                 newSpan.innerHTML = dat;
+                newSpan.style.height = dat + 'px';
+                newSpan.style.top = 150 - parseInt(dat);
                 numDiv.appendChild(newSpan);
                 newSpan.addEventListener("click", spanOut, false);
             }
@@ -122,26 +128,27 @@
         numDiv.removeChild(this);
     }
     function sort() {
-        var spanRow=document.getElementsByTagName("span");
+        var spanRow = document.getElementsByTagName("span");
         bubbleSort(spanRow);
     }
-    function swap(items, firstIndex, secondIndex){
+    function swap(items, firstIndex, secondIndex) {
         var Div = document.getElementsByClassName("num-div")[0];
-        Div.insertBefore(items[secondIndex],items[firstIndex]);
-        if(secondIndex<(items.length-1)){
-            Div.insertBefore(items[++firstIndex],items[++secondIndex]);
+        Div.insertBefore(items[secondIndex], items[firstIndex]);
+        if (secondIndex < (items.length - 1)) {
+            Div.insertBefore(items[++firstIndex], items[++secondIndex]);
         }
         else
             Div.appendChild(items[++firstIndex]);
-        console.log(items.length);
-    };
+    }
 
-    function bubbleSort(items){
-        var len = items.length, i, j, stop;
-        for (i = 0; i < len; i++){
-            for (j = 0, stop = len-i; j < stop; j++){
-                if (parseInt(items[j].style.height) > parseInt(items[j+1].style.height)){
-                   swap(items, j, j+1);
+    function bubbleSort(items) {
+        var len = items.length, i, j, stop, flag = true;
+        for (i = 0; i < len && flag; i++) {
+            for (j = 0, stop = len - i - 1; j < stop; j++) {
+                flag = false;
+                if (parseInt(items[j].style.height) > parseInt(items[j + 1].style.height)) {
+                    swap(items, j, j + 1);
+                    flag = true;
                 }
             }
         }
