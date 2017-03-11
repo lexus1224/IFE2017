@@ -1,0 +1,117 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 03</title>
+    <style type="text/css">
+        .num-div {
+            margin-top: 25px;
+        }
+        /*设置span样式*/
+        div > span {
+            border: 1px solid red;
+            padding: 10px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="input-div">
+    <input id="input-num" type="text" value="" placeholder="Please input a number">
+    &nbsp&nbsp
+    <button id="left-in">左侧入</button>
+    <button id="right-in">右侧入</button>
+    &nbsp&nbsp
+    <button id="left-out">左侧出</button>
+    <button id="right-out">右侧出</button>
+</div>
+<div class="num-div">
+
+</div>
+
+<script type="text/javascript">
+    /**
+     * getData读取input中输入的数字
+     * 并判断合法性
+     */
+    function getData() {
+        var data = document.getElementById("input-num").value;
+        if (!isNaN(data)) {
+            console.log(data);
+            return data;
+        }
+        else {
+            alert("It's not a number!!!");
+        }
+    }
+    function btnLeftIn() {
+        /*
+         左侧入对应方法
+         */
+        var dat = getData();
+        if(dat){
+            var numDiv = document.getElementsByClassName("num-div")[0];
+            var newSpan = document.createElement("span");
+            newSpan.innerHTML = dat;
+            numDiv.insertBefore(newSpan, numDiv.firstChild);
+            newSpan.addEventListener("click", spanOut, false); //对每个新增的span都绑定click事件
+        }
+
+    }
+    function btnRightIn() {
+        /*
+         右侧入对应方法
+         */
+        var dat = getData();
+        if(dat){
+            var numDiv = document.getElementsByClassName("num-div")[0];
+            var newSpan = document.createElement("span");
+            newSpan.innerHTML = dat;
+            numDiv.appendChild(newSpan);
+            newSpan.addEventListener("click", spanOut, false);
+        }
+    }
+    function btnLeftOut() {
+        /*
+         左侧出对应方法
+         */
+        var numDiv = document.getElementsByClassName("num-div")[0];
+        var fchild = numDiv.firstChild.innerHTML;
+        numDiv.removeChild(numDiv.firstChild);
+        alert(fchild);
+    }
+    function btnRightOut() {
+        /*
+         右侧出对应方法
+         */
+        var numDiv = document.getElementsByClassName("num-div")[0];
+        var lchild = numDiv.lastChild.innerHTML;
+        numDiv.removeChild(numDiv.lastChild);
+        alert(lchild);
+    }
+
+    function spanOut() {
+        /*
+         对点击span操作执行删除
+         */
+        var numDiv = document.getElementsByClassName("num-div")[0];
+        numDiv.removeChild(this);
+    }
+
+    function init() {
+        //绑定各个button事件
+        var btn1 = document.getElementById("left-in");
+        btn1.addEventListener("click", btnLeftIn, false);
+        var btn2 = document.getElementById("right-in");
+        btn2.addEventListener("click", btnRightIn, false);
+        var btn3 = document.getElementById("left-out");
+        btn3.addEventListener("click", btnLeftOut, false);
+        var btn4 = document.getElementById("right-out");
+        btn4.addEventListener("click", btnRightOut, false);
+    }
+
+    init();
+
+</script>
+</body>
+</html>
