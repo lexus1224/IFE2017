@@ -12,9 +12,8 @@
 
         /*设置span样式*/
         div > span {
-            /*position: relative;*/
-            float: left;
-            display: block;
+            position: relative;
+            display: inline-block;
             padding: 0px;
             margin-left: 2px;
             color: transparent;
@@ -66,6 +65,7 @@
             alert("total numbers are over limit(60)");
         }
         else {
+            var numDiv = document.getElementsByClassName("num-div")[0];
             var newSpan = document.createElement("span");
             newSpan.innerHTML = val + '';
             newSpan.style.height = val + 'px';
