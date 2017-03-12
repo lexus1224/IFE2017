@@ -12,8 +12,9 @@
 
         /*设置span样式*/
         div > span {
-            position: relative;
-            display: inline-block;
+            /*position: relative;*/
+            float: left;
+            display: block;
             padding: 0px;
             margin-left: 2px;
             color: transparent;
@@ -33,6 +34,8 @@
     &nbsp&nbsp
     <button id="left-out">左侧出</button>
     <button id="right-out">右侧出</button>
+    &nbsp&nbsp
+    <button id="ran-btn">随机</button>
     <button id="sort-btn">排序</button>
 </div>
 <div class="num-div"></div>
@@ -56,6 +59,22 @@
         else
             alert("It's not a number!!!");
     }
+    function rand() {
+        var val = Math.round(Math.random() * 90 + 10);
+        var spanNum = document.getElementsByTagName("span");
+        if (spanNum.length >= 60) {
+            alert("total numbers are over limit(60)");
+        }
+        else {
+            var newSpan = document.createElement("span");
+            newSpan.innerHTML = val + '';
+            newSpan.style.height = val + 'px';
+            newSpan.style.top = 150 - val;
+            numDiv.appendChild(newSpan);
+            newSpan.addEventListener("click", spanOut, false);
+        }
+
+    }
     function btnLeftIn() {
         /*
          左侧入对应方法
@@ -71,7 +90,7 @@
                 var newSpan = document.createElement("span");
                 newSpan.innerHTML = dat;
                 newSpan.style.height = dat + 'px';
-                newSpan.style.top = 140 - parseInt(dat);
+                newSpan.style.top = 150 - parseInt(dat);
                 numDiv.insertBefore(newSpan, numDiv.firstChild);
                 newSpan.addEventListener("click", spanOut, false); //对每个新增的span都绑定click事件
             }
@@ -94,7 +113,7 @@
                 var newSpan = document.createElement("span");
                 newSpan.innerHTML = dat;
                 newSpan.style.height = dat + 'px';
-                newSpan.style.top = 140 - parseInt(dat);
+                newSpan.style.top = 150 - parseInt(dat);
                 numDiv.appendChild(newSpan);
                 newSpan.addEventListener("click", spanOut, false);
             }
@@ -145,18 +164,18 @@
         var len = items.length, i, j, stop, flag = true, i = 0;
         var time = setInterval(function () {
 
-                for (j = 0, stop = len - i - 1; j < stop; j++) {
-                    flag = false;
-                    if (parseInt(items[j].style.height) > parseInt(items[j + 1].style.height)) {
-                        swap(items, j, j + 1);
-                        console.log(j);
-                    }
+            for (j = 0, stop = len - i - 1; j < stop; j++) {
+                flag = false;
+                if (parseInt(items[j].style.height) > parseInt(items[j + 1].style.height)) {
+                    swap(items, j, j + 1);
+                    console.log(j);
                 }
-            ((i == len)&&(flag)) ? clearInterval(time) : i++;
+            }
+            ((i == len) && (flag)) ? clearInterval(time) : i++;
         }, 500);
         return items;
     }
-    function init() {
+    (function () {
         //绑定各个button事件
         var btn1 = document.getElementById("left-in");
         btn1.addEventListener("click", btnLeftIn, false);
@@ -166,11 +185,12 @@
         btn3.addEventListener("click", btnLeftOut, false);
         var btn4 = document.getElementById("right-out");
         btn4.addEventListener("click", btnRightOut, false);
+        var ranBtn = document.getElementById("ran-btn");
+        ranBtn.addEventListener("click", rand, false);
         var sortBtn = document.getElementById("sort-btn");
         sortBtn.addEventListener("click", sort, false);
-    }
+    }());
 
-    init();
 
 </script>
 </body>
