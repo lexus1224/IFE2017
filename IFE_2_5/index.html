@@ -14,11 +14,12 @@
         div > span {
             position: relative;
             display: inline-block;
-            border: 1px solid red;
             padding: 0px;
-            margin-left: 5px;
-            color:red;
+            margin-left: 2px;
+            color: transparent;
             background-color: red;
+            width: 10px;
+            /*font-size: 6px;*/
             /*margin: 10px;*/
         }
     </style>
@@ -34,9 +35,7 @@
     <button id="right-out">右侧出</button>
     <button id="sort-btn">排序</button>
 </div>
-<div class="num-div">
-
-</div>
+<div class="num-div"></div>
 
 <script type="text/javascript">
     /**
@@ -64,7 +63,7 @@
         var dat = getData();
         if (dat) {
             var spanNum = document.getElementsByTagName("span");
-            if (spanNum.length >= 6) {
+            if (spanNum.length >= 60) {
                 alert("total numbers are over limit(60)");
             }
             else {
@@ -87,7 +86,7 @@
         var dat = getData();
         if (dat) {
             var spanNum = document.getElementsByTagName("span");
-            if (spanNum.length >= 6) {
+            if (spanNum.length >= 60) {
                 alert("total numbers are over limit(60)");
             }
             else {
@@ -95,7 +94,7 @@
                 var newSpan = document.createElement("span");
                 newSpan.innerHTML = dat;
                 newSpan.style.height = dat + 'px';
-                newSpan.style.top = 150 - parseInt(dat);
+                newSpan.style.top = 140 - parseInt(dat);
                 numDiv.appendChild(newSpan);
                 newSpan.addEventListener("click", spanOut, false);
             }
@@ -132,6 +131,7 @@
         bubbleSort(spanRow);
     }
     function swap(items, firstIndex, secondIndex) {
+        console.log(firstIndex);
         var Div = document.getElementsByClassName("num-div")[0];
         Div.insertBefore(items[secondIndex], items[firstIndex]);
         if (secondIndex < (items.length - 1)) {
@@ -142,16 +142,18 @@
     }
 
     function bubbleSort(items) {
-        var len = items.length, i, j, stop, flag = true;
-        for (i = 0; i < len && flag; i++) {
-            for (j = 0, stop = len - i - 1; j < stop; j++) {
-                flag = false;
-                if (parseInt(items[j].style.height) > parseInt(items[j + 1].style.height)) {
-                    swap(items, j, j + 1);
-                    flag = true;
+        var len = items.length, i, j, stop, flag = true, i = 0;
+        var time = setInterval(function () {
+
+                for (j = 0, stop = len - i - 1; j < stop; j++) {
+                    flag = false;
+                    if (parseInt(items[j].style.height) > parseInt(items[j + 1].style.height)) {
+                        swap(items, j, j + 1);
+                        console.log(j);
+                    }
                 }
-            }
-        }
+            ((i == len)&&(flag)) ? clearInterval(time) : i++;
+        }, 500);
         return items;
     }
     function init() {
