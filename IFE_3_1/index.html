@@ -1,0 +1,87 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>IFE Task</title>
+    <style type="text/css">
+        .input-div {
+            text-align: center;
+            position: relative;
+            top: 40%;
+        }
+
+        #input-text {
+            width: 200px;
+            height: 40px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            outline: none;
+            font-size: 20px;
+            font-family: sans-serif;
+        }
+
+        #check-btn {
+            background-color: #5043e1;
+            color: #fff;
+            height: 40px;
+            width: 100px;
+            border: 0px;
+            border-radius: 8px;
+        }
+
+        span {
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        button {
+            font-size: 18px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="input-div">
+    <span>名称</span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <input id="input-text" type="text">&nbsp&nbsp
+    <button id="check-btn">验证</button>
+</div>
+
+<script type="text/javascript">
+    /**
+     * getData读取input中输入的数字
+     * 并判断合法性
+     */
+
+    function valid() {
+        /*
+         输入模糊查询的内容，并进行匹配，对成功匹配的文字颜色变为红色
+         */
+        var length = 0;
+        var data = document.getElementById("input-text").value;
+        var input = document.getElementById("input-text");
+        for (var i = 0; i < data.length; i++) {
+            var wordNum = data.charCodeAt(i);
+            if (wordNum > 0x00 && wordNum < 0xFF)
+                length++;
+            else
+                length += 2;
+        }
+        if (length < 4 || length > 16) {
+            input.style.border = "2px solid #E1311E";
+        }
+        else {
+            input.style.border = "2px solid #40EC27";
+        }
+
+    }
+
+    function init() {
+        //绑定button事件
+        var va = document.getElementById("check-btn");
+        va.addEventListener("click", valid, false);
+    }
+    init();
+</script>
+</body>
+</html>
