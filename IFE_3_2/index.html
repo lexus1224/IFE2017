@@ -9,10 +9,15 @@
             font-family: 微软雅黑;
         }
 
-        .input-div {
-            margin-top: 15px;
-            text-align: center;
+        .form-horizontal {
+            position: relative;
+            top: 10%;
+        }
 
+        .input-div {
+            margin: 30px auto;
+            text-align: center;
+            height: 56px;
         }
 
         label {
@@ -26,11 +31,10 @@
             color: #999;
         }
 
-
     </style>
 </head>
 <body>
-<form class="form-horizontal">
+<form class="form-horizontal" onsubmit="return checkSubmit()">
     <div class="form-group input-div">
         <label class="col-md-1 col-md-offset-3 control-label">用户名</label>
         <div class="col-md-6">
@@ -71,6 +75,9 @@
         <span class="col-md-3 col-md-offset-4" id="phone-span"></span>
     </div>
 
+    <div class="form-group input-div">
+        <button type="submit" class="col-md-1 col-md-offset-6 btn btn-primary btn-lg">提交</button>
+    </div>
 </form>
 
 
@@ -79,7 +86,7 @@
      * getData读取input中输入的数字
      * 并判断合法性
      */
-
+    var flag = [false, false, false, false, false];
     function valid() {
         /*
 
@@ -101,6 +108,7 @@
                     this.style.border = "2px solid #40EC27";
                     span.innerHTML = "用户名格式正确"
                     span.style.color = "#40EC27";
+                    flag[0] = true;
                 }
                 else {
                     this.style.border = "2px solid #E1311E";
@@ -109,6 +117,7 @@
                     else
                         span.innerHTML = "用户名格式错误";
                     span.style.color = "#E1311E";
+                    flag[0] = false;
                 }
                 break;
             case "code-text":
@@ -118,6 +127,7 @@
                     this.style.border = "2px solid #40EC27";
                     span.innerHTML = "密码可用"
                     span.style.color = "#40EC27";
+                    flag[1] = true;
                 }
                 else {
                     this.style.border = "2px solid #E1311E";
@@ -126,7 +136,9 @@
                     else
                         span.innerHTML = "密码不可用";
                     span.style.color = "#E1311E";
+                    flag[1] = false;
                 }
+
                 break;
             case "code-confirm-text":
                 var codeVal = document.getElementById("code-text").value;
@@ -134,6 +146,7 @@
                     this.style.border = "2px solid #40EC27";
                     span.innerHTML = "密码输入一致"
                     span.style.color = "#40EC27";
+                    flag[2] = true;
                 }
                 else {
                     this.style.border = "2px solid #E1311E";
@@ -142,16 +155,18 @@
                     else
                         span.innerHTML = "密码输入不一致";
                     span.style.color = "#E1311E";
+                    flag[2] = false;
                 }
                 break;
 
             case "phone-text":
-                var exp = /\d{11}/;
+                var exp = /^1[3|5|8]\d{9}$/;
                 var res = exp.exec(data);
                 if (res) {
                     this.style.border = "2px solid #40EC27";
                     span.innerHTML = "手机号码格式正确"
                     span.style.color = "#40EC27";
+                    flag[3] = true;
                 }
                 else {
                     this.style.border = "2px solid #E1311E";
@@ -160,16 +175,18 @@
                     else
                         span.innerHTML = "手机号码格式有误";
                     span.style.color = "#E1311E";
+                    flag[3] = false;
                 }
                 break;
 
             case "email-text":
-                var exp = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+                var exp = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((.[a-zA-Z0-9_-]{2,3}){1,2})$/;
                 var res = exp.exec(data);
                 if (res) {
                     this.style.border = "2px solid #40EC27";
                     span.innerHTML = "邮箱格式正确"
                     span.style.color = "#40EC27";
+                    flag[4] = true;
                 }
                 else {
                     this.style.border = "2px solid #E1311E";
@@ -178,10 +195,9 @@
                     else
                         span.innerHTML = "邮箱格式有误";
                     span.style.color = "#E1311E";
+                    flag[4] = false;
                 }
                 break;
-
-
         }
     }
 
@@ -193,10 +209,10 @@
                 span.innerHTML = "必填，长度为4~16位字符";
                 break;
             case "code-text":
-                span.innerHTML = "密码为6~20位数字或字母";
+                span.innerHTML = "密码为6~20位数字与字母组合";
                 break;
             case "code-confirm-text":
-                span.innerHTML = "请再次输入密码";
+                span.innerHTML = "请再次输入相同密码";
                 break;
             case "email-text":
                 span.innerHTML = "请输入邮箱账号，如abc1234@163.com";
@@ -208,7 +224,15 @@
         span.style.color = "#999";
         this.style.border = "transparent";
     }
-
+    function checkSubmit() {
+        for (var i = 0; i < flag.length; i++) {
+            if (flag[i] == false) {
+                alert("您的输入有误！请检查")
+                return false;
+            }
+        }
+        return true;
+    }
     function init() {
         //绑定事件
         var myEvent = document.getElementsByClassName("form-control");
@@ -216,6 +240,7 @@
             myEvent[i].addEventListener("focus", show, false);
         for (i = 0; i < myEvent.length; i++)
             myEvent[i].addEventListener("blur", valid, false);
+
     }
     init();
 </script>
