@@ -1,0 +1,224 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>IFE Task</title>
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+            font-family: 微软雅黑;
+        }
+
+        .input-div {
+            margin-top: 15px;
+            text-align: center;
+
+        }
+
+        label {
+            padding-top: 5px !important;
+            font-size: 16px;
+        }
+
+        span {
+            text-align: left;
+            font-size: 16px;
+            color: #999;
+        }
+
+
+    </style>
+</head>
+<body>
+<form class="form-horizontal">
+    <div class="form-group input-div">
+        <label class="col-md-1 col-md-offset-3 control-label">用户名</label>
+        <div class="col-md-6">
+            <input type="text" class="form-control" id="name-text" placeholder="">
+        </div>
+        <span class="col-md-3 col-md-offset-4" id="name-span"></span>
+    </div>
+
+    <div class="form-group input-div">
+        <label class="col-md-1 col-md-offset-3 control-label">密码</label>
+        <div class="col-md-6">
+            <input type="password" class="form-control" id="code-text" placeholder="">
+        </div>
+        <span class="col-md-3 col-md-offset-4" id="code-span"></span>
+    </div>
+
+    <div class="form-group input-div">
+        <label class="col-md-1 col-md-offset-3 control-label">确认密码</label>
+        <div class="col-md-6">
+            <input type="password" class="form-control" id="code-confirm-text" placeholder="">
+        </div>
+        <span class="col-md-3 col-md-offset-4" id="code-confirm-span"></span>
+    </div>
+
+    <div class="form-group input-div">
+        <label class="col-md-1 col-md-offset-3 control-label">邮箱账号</label>
+        <div class="col-md-6">
+            <input type="text" class="form-control" id="email-text" placeholder="">
+        </div>
+        <span class="col-md-3 col-md-offset-4" id="email-span"></span>
+    </div>
+
+    <div class="form-group input-div">
+        <label class="col-md-1 col-md-offset-3 control-label">手机号码</label>
+        <div class="col-md-6">
+            <input type="text" class="form-control" id="phone-text" placeholder="">
+        </div>
+        <span class="col-md-3 col-md-offset-4" id="phone-span"></span>
+    </div>
+
+</form>
+
+
+<script type="text/javascript">
+    /**
+     * getData读取input中输入的数字
+     * 并判断合法性
+     */
+
+    function valid() {
+        /*
+
+         */
+        var textID = this.getAttribute("id");
+        var span = this.parentNode.nextSibling.nextSibling;
+        var data = this.value;
+        switch (textID) {
+            case "name-text":
+                var length = 0;
+                for (var i = 0; i < data.length; i++) {
+                    var wordNum = data.charCodeAt(i);
+                    if (wordNum > 0x00 && wordNum < 0xFF)
+                        length++;
+                    else
+                        length += 2;
+                }
+                if (length >= 4 && length <= 16) {
+                    this.style.border = "2px solid #40EC27";
+                    span.innerHTML = "用户名格式正确"
+                    span.style.color = "#40EC27";
+                }
+                else {
+                    this.style.border = "2px solid #E1311E";
+                    if (length == 0)
+                        span.innerHTML = "用户名不能为空";
+                    else
+                        span.innerHTML = "用户名格式错误";
+                    span.style.color = "#E1311E";
+                }
+                break;
+            case "code-text":
+                var exp = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/;
+                var res = exp.exec(data);
+                if (res) {
+                    this.style.border = "2px solid #40EC27";
+                    span.innerHTML = "密码可用"
+                    span.style.color = "#40EC27";
+                }
+                else {
+                    this.style.border = "2px solid #E1311E";
+                    if (!data)
+                        span.innerHTML = "密码不能为空";
+                    else
+                        span.innerHTML = "密码不可用";
+                    span.style.color = "#E1311E";
+                }
+                break;
+            case "code-confirm-text":
+                var codeVal = document.getElementById("code-text").value;
+                if (data == codeVal && data) {
+                    this.style.border = "2px solid #40EC27";
+                    span.innerHTML = "密码输入一致"
+                    span.style.color = "#40EC27";
+                }
+                else {
+                    this.style.border = "2px solid #E1311E";
+                    if (!data)
+                        span.innerHTML = "密码不能为空";
+                    else
+                        span.innerHTML = "密码输入不一致";
+                    span.style.color = "#E1311E";
+                }
+                break;
+
+            case "phone-text":
+                var exp = /\d{11}/;
+                var res = exp.exec(data);
+                if (res) {
+                    this.style.border = "2px solid #40EC27";
+                    span.innerHTML = "手机号码格式正确"
+                    span.style.color = "#40EC27";
+                }
+                else {
+                    this.style.border = "2px solid #E1311E";
+                    if (!data)
+                        span.innerHTML = "手机号码不能为空";
+                    else
+                        span.innerHTML = "手机号码格式有误";
+                    span.style.color = "#E1311E";
+                }
+                break;
+
+            case "email-text":
+                var exp = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+                var res = exp.exec(data);
+                if (res) {
+                    this.style.border = "2px solid #40EC27";
+                    span.innerHTML = "邮箱格式正确"
+                    span.style.color = "#40EC27";
+                }
+                else {
+                    this.style.border = "2px solid #E1311E";
+                    if (!data)
+                        span.innerHTML = "邮箱不能为空";
+                    else
+                        span.innerHTML = "邮箱格式有误";
+                    span.style.color = "#E1311E";
+                }
+                break;
+
+
+        }
+    }
+
+    function show() {
+        var textID = this.getAttribute("id");
+        var span = this.parentNode.nextSibling.nextSibling;
+        switch (textID) {
+            case "name-text":
+                span.innerHTML = "必填，长度为4~16位字符";
+                break;
+            case "code-text":
+                span.innerHTML = "密码为6~20位数字或字母";
+                break;
+            case "code-confirm-text":
+                span.innerHTML = "请再次输入密码";
+                break;
+            case "email-text":
+                span.innerHTML = "请输入邮箱账号，如abc1234@163.com";
+                break;
+            case "phone-text":
+                span.innerHTML = "请输入长度为11位大陆手机号码";
+                break;
+        }
+        span.style.color = "#999";
+        this.style.border = "transparent";
+    }
+
+    function init() {
+        //绑定事件
+        var myEvent = document.getElementsByClassName("form-control");
+        for (var i = 0; i < myEvent.length; i++)
+            myEvent[i].addEventListener("focus", show, false);
+        for (i = 0; i < myEvent.length; i++)
+            myEvent[i].addEventListener("blur", valid, false);
+    }
+    init();
+</script>
+</body>
+</html>
+<script src="http://cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
