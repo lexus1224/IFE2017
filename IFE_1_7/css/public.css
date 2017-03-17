@@ -1,0 +1,39 @@
+* {
+    font-family: "Microsoft YaHei UI";
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    min-width: 1280px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4 {
+    font-weight: normal;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+.column {
+    flex-direction: column;
+}
+
+section {
+    width: 100%;
+}
+
+button {
+    cursor: pointer;
+}
+
+input {
+    border: none;
+}

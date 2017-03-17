@@ -1,0 +1,543 @@
+/*header部分*/
+header {
+    height: 57px;
+    background-color: #fff;
+    justify-content: space-between;
+}
+
+header img {
+    margin-right: 18px;
+}
+
+header h2 {
+    font-size: 21px;
+}
+
+.nav-list {
+    line-height: 57px;
+}
+
+.nav-list a {
+    color: #b5b7bb;
+    font-size: 14px;
+}
+
+.nav-list:hover {
+    color: #e74f4d;
+    border-bottom: 2px solid #e74f4d;
+}
+
+.nav-left {
+    margin-left: 60px;
+}
+
+.nav-right {
+    width: 540px;
+    margin-right: 60px;
+    justify-content: space-around;
+}
+
+.sign-up {
+    background: url("../img/sign-up.gif") no-repeat center left;
+    padding-left: 20px;
+    color: #e74f4d;
+}
+
+/*section1部分*/
+.row1 {
+    background: url("../img/think.gif") no-repeat;
+    height: 690px;
+    background-size: cover;
+}
+
+.row1 .column {
+    margin-left: 108px;
+    align-items: flex-start;
+}
+
+.row1 button {
+    width: 328px;
+    height: 60px;
+    color: #fff;
+    background-color: #e74f4d;
+    border: none;
+    font-size: 30px;
+}
+
+.row1 hgroup {
+    color: #fff;
+}
+
+.row1 h1 {
+    font-weight: normal;
+    font-size: 60px;
+    margin-bottom: 30px;
+}
+
+.row1 h2 {
+    font-size: 21px;
+    margin-bottom: 60px;
+}
+
+/*section2部分*/
+.row2 {
+    justify-content: space-around;
+    height: 220px;
+}
+
+.row2 .column {
+    justify-content: space-around;
+    height: 150px;
+}
+
+.row2 .line {
+    height: 36px;
+    border-left: 2px solid #767777;
+    margin-top: 65px;
+}
+
+.row2 p {
+    color: #767777;
+    font-size: 14px;
+    line-height: 18px;
+    font-family: SimHei;
+    text-align: center;
+    border-left: 2px solid #999;
+}
+
+.row2 p:first-of-type {
+    border-left: none;
+}
+
+/*section3部分*/
+.row3 {
+    height: 350px;
+    background-color: #ededed;
+    justify-content: center;
+}
+
+.row3 h1 {
+    font-family: SimHei;
+    font-size: 54px;
+    color: #767777;
+}
+
+/*section4部分*/
+.row4 {
+    background: url("../img/map.gif") no-repeat;
+    background-size: cover;
+    height: 340px;
+    justify-content: space-around;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    z-index: 0;
+}
+
+.row4 .red-mask {
+    position: absolute;
+    background: rgba(255, 0, 0, 0.15);
+    z-index: -1;
+    height: 340px;
+    width: 100%;
+}
+
+.row4 .activity-info h3 {
+    font-size: 21px;
+    margin-bottom: 5px;
+    margin-top: -20px;
+}
+
+.row4 .activity-info h4 {
+    margin-top: 20px;
+    font-size: 12px;
+}
+
+.row4 .activity-info hr {
+    width: 50px;
+    height: 2px;
+    border: none;
+    background-color: #fff;
+}
+
+.row4 .flex {
+    width: 80%;
+    justify-content: space-around;
+}
+
+.row4 select {
+    margin-top: -150px;
+    color: #767777;
+    background: #fff;
+    width: 240px;
+    padding: 5px;
+    font-size: 16px;
+    height: 34px;
+    border: none;
+}
+
+.row4 select:active {
+    border: 1px solid #d79995;
+}
+
+.row4 select option:hover {
+    background-color: #e74f4d;
+    height: 24px;
+}
+
+.row4 button {
+    margin-top: -150px;
+    letter-spacing: 28px;
+    border: none;
+    font-size: 14px;
+    color: #fff;
+    width: 240px;
+    height: 34px;
+    padding: 5px 5px 5px 28px;
+    background-color: #e74f4d;
+    text-align: center;
+}
+
+/*section5部分*/
+.row5 {
+    justify-content: center;
+    background-color: #f7f7f7;
+}
+
+.row5 .column {
+    margin: 100px 30px;
+}
+
+.row5 h1 {
+    width: 219px;
+    padding-left: 32px;
+    letter-spacing: 32px;
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 0;
+}
+
+.row5 h2 {
+    font-size: 18px;
+    margin-bottom: 0;
+}
+
+.row5 h3 {
+    color: #767777;
+    font-size: 14px;
+}
+
+/*section6部分*/
+.row6 {
+    height: 566px;
+}
+
+.row6 hgroup {
+    background: url("../img/fivemen.gif") no-repeat;
+    background-size: cover;
+    color: #fff;
+    justify-content: center;
+    width: 80%;
+    height: 100%;
+}
+
+.row6 hgroup h1 {
+    font-size: 158px;
+    margin: 0;
+}
+
+.row6 hgroup h2 {
+    font-size: 50px;
+    margin: -80px 0 20px 0;
+}
+
+.row6 hgroup h3 {
+    font-size: 22px;
+    margin: 20px auto;
+}
+
+.row6 article {
+    width: 20%;
+}
+
+.row6 article h3 {
+    font-size: 22px;
+    font-family: SimHei;
+}
+
+.row6 article span {
+    color: #e74f4d;
+}
+
+.row6 article p {
+    width: 70%;
+    font-size: 12px;
+    color: #bdbdbd;
+    font-family: SimSun-ExtB;
+    line-height: 30px;
+}
+
+.row6 article button {
+    width: 105px;
+    height: 33px;
+    color: #e74f4d;
+    background-color: #fff;
+    border: 1px solid #e74f4d;
+    margin: 40px 0 25px 0;
+}
+
+/*section7部分*/
+.row7 {
+    height: 520px;
+}
+
+.row7 .flex {
+    height: 100%;
+}
+
+.row7 .red, .row7 .white {
+    width: 40%;
+    justify-content: center;
+    font-family: SimHei;
+
+    font-size: 21px;
+}
+
+.row7 h3 {
+    line-height: 40px;
+    text-align: center;
+}
+
+.row7 .red {
+    background-color: #e74f4d;
+    color: #fff;
+}
+
+.row7 .white {
+    color: #000;
+}
+
+.row7 hr {
+    width: 32px;
+    height: 2px;
+    border: none;
+}
+
+.row7 .red hr {
+    background-color: white;
+    border: none;
+}
+
+.row7 .white hr {
+    border: none;
+    background-color: #aaa;
+}
+
+.row7 button {
+    width: 170px;
+    height: 46px;
+    margin-top: 20px;
+}
+
+.row7 .red button {
+    color: white;
+    background-color: #e74f4d;
+    border: 1px solid #fff;
+}
+
+.row7 .white button {
+    color: #e74f4d;
+    background-color: white;
+    border: 1px solid #e74f4d;
+}
+
+.row7 .right-pic {
+    width: 20%;
+    height: 100%;
+}
+
+.row7 .right-pic img {
+    width: 100%;
+    height: 100%;
+}
+
+/*section8部分*/
+.row8 {
+    height: 750px;
+}
+
+.row8 .volunteer {
+    text-align: center;
+}
+
+.row8 .volunteer hr {
+    width: 40px;
+    height: 2px;
+    background-color: #e74f4d;
+    border: none;
+}
+
+.row8 .volunteer h3 {
+    font-family: SimHei;
+    font-size: 21px;
+}
+
+.row8 .volunteer p {
+    font-size: 12px;
+    line-height: 20px;
+    color: #b7b7b7;
+}
+
+.row8 .detail {
+    width: 100%;
+    justify-content: center;
+}
+
+.row8 aside {
+    width: 16%;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 400px;
+    margin: 0 50px 0 50px;
+    padding-bottom: 30px;
+}
+
+.row8 aside h3 {
+    font-family: simhei;
+    font-size: 14px;
+    margin: 25px 0;
+}
+
+.row8 aside p {
+    font-family: SimSun-ExtB;
+    font-size: 12px;
+    color: #b5b3b3;
+    line-height: 24px;
+}
+
+.row8 .protocol {
+    width: 100%;
+    position: relative;
+}
+
+.row8 .protocol button {
+    border: none;
+    background-color: #fff;
+    color: #6f7178;
+}
+
+.row8 aside .more {
+    position: absolute;
+    right: 0;
+    bottom: -6px;
+    font-family: SimSun-ExtB;
+    font-size: 12px;
+    color: #a5a3a2;
+}
+
+.row8 form {
+    width: 40%;
+    margin-left: 20px;
+    color: #686868;
+}
+
+.row8 form .line {
+    margin: 20px 0;
+    width: 100%;
+    justify-content: center;
+}
+
+.row8 form .line .surround {
+    vertical-align: middle;
+    position: relative;
+    margin: 0 15px;
+}
+
+.row8 form label {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    margin-top: -6px;
+    z-index: 10;
+    font-size: 12px;
+    font-family: SimSun-ExtB;
+}
+
+.row8 form input {
+    background-color: #ededee;
+    width: 250px;
+    height: 42px;
+    padding-left: 80px;
+}
+
+.row8 form .line3 label {
+    top: 20px;
+    left: 15px;
+}
+
+.row8 form #description {
+    width: 520px;
+    height: 120px;
+    border: none;
+    padding: 10px 0 0 170px;
+    background-color: #ededee;
+    resize: none;
+}
+
+.row8 form .btn {
+    height: 40px;
+    border: none;
+    width: 690px;
+    height: 40px;
+    font-size: 14px;
+    font-family: SimHei;
+    letter-spacing: 1px;
+}
+
+/*section9部分*/
+.row9 {
+    color: #fff;
+    background-color: #32353e;
+    height: 360px;
+    justify-content: center;
+}
+
+.row9 h3 {
+    font-family: SimHei;
+    font-size: 21px;
+    margin: 0;
+}
+
+.row9 p {
+    text-align: center;
+    line-height: 20px;
+    font-family: SimSun-ExtB;
+    font-size: 12px;
+}
+
+.row9 .input-text {
+    margin: 30px 0;
+    width: 440px;
+    height: 40px;
+}
+
+.row9 .input-button {
+    margin-left: -5px;
+    width: 80px;
+    height: 46px;
+    color: #fff;
+    border: none;
+    background-color: #6f7178;
+}
+
+/*footer部分*/
+footer {
+    vertical-align: middle;
+    height: 58px;
+    padding: 0 40px 0 100px;
+    font-family: SimSun-ExtB;
+    font-size: 12px;
+    color: #fff;
+    justify-content: space-between;
+    background-color: #303039;
+}
